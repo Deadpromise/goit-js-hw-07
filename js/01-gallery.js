@@ -1,12 +1,9 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-console.log(galleryItems);
+// console.log(galleryItems);
 
 const galleryRef = document.querySelector('.gallery');
-
-
-
 
 const murkup = galleryItems.map(el => {
     const cardMarkup = `<div class="gallery__item">
@@ -24,34 +21,30 @@ const murkup = galleryItems.map(el => {
 
 galleryRef.innerHTML = murkup;
 
-galleryRef.addEventListener('click', function (e) {
+function onImgClick(e) {
+    // console.log(e.target.dataset.source);
     e.preventDefault();
-});
-
-function getImgLink(e) {
-    console.log(e.target.dataset.source);
-    return e.target.dataset.source;
+    const bigImgRef = e.target.dataset.source;
+    basicLightbox.create(`
+		<img width="1280" height="853" src="${bigImgRef}">
+	`).show();
 
 };
 
-galleryRef.addEventListener('click', getImgLink);
+galleryRef.addEventListener('click', onImgClick);
 
-// const galleryItemRef = document.querySelector('.gallery__item');
-// console.log(galleryItemRef);
-
-// const galleryLinkRef = document.querySelector('.gallery__link');
-// console.log(galleryLinkRef);
-// galleryLinkRef.addEventListener('click', onLinkClick);
-
-
-// function onLinkClick(e) {
-//     e.preventDefault();
-//     return false;
+// function onEscPress(e) {
+//             const ESC_KEY_CODE = 'Escape';
+//             const isEscKey = e.code === ESC_KEY_CODE;
+//             if (isEscKey) {
+//                 console.log(e.code);
+//                 // modalClose();
+//             };
 // };
+      
 
-// galleryItemRef.addEventListener('click', onItemClick);
 
-// function onItemClick(e) {
-//     // e.preventDefault();
-//     console.log("нажаль");
-// };
+
+// window.addEventListener('keydown', onEscPress);
+
+
